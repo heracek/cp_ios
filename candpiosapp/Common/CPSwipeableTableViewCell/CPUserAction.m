@@ -12,6 +12,7 @@
 #import "OneOnOneChatViewController.h"
 #import "UserProfileViewController.h"
 #import "CPUserSessionHandler.h"
+#import "PostLoveCell.h"
 
 @implementation CPUserAction
 
@@ -28,13 +29,19 @@ static UserProfileViewController* userProfileViewController;
 
 + (void)cell:(CPUserActionCell*)cell sendLoveFromViewController:(UIViewController*)viewController
 {
+    User *sendLoveToUser = cell.user;
+    if ([cell isKindOfClass:[PostLoveCell class]]) {
+        PostLoveCell *postLoveCell = (PostLoveCell *)cell;
+        sendLoveToUser = postLoveCell.post.receiver;
+    }
+    
     // only show the love modal if this user is logged in
     if (![CPUserDefaultsHandler currentUser]) {
         [CPUserSessionHandler showLoginBanner];
         cell.selected = NO;
         return;
     }    
-    if (cell.user.userID == [CPUserDefaultsHandler currentUser].userID) {
+    if (sendLoveToUser.userID == [CPUserDefaultsHandler currentUser].userID) {
         // cheeky response for self-talk
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Self-Love" 
                                                             message:@"Feeling lonely?  Try sharing some love with others." 
@@ -46,9 +53,9 @@ static UserProfileViewController* userProfileViewController;
     }
     if ([CPUserDefaultsHandler currentUser]) {
         // only show the love modal if this isn't the user themselves
-        if (cell.user.userID != [CPUserDefaultsHandler currentUser].userID) {
+        if (sendLoveToUser.userID != [CPUserDefaultsHandler currentUser].userID) {
             UserLoveViewController *loveModal = [[UIStoryboard storyboardWithName:@"UserProfileStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"SendLoveModal"];
-            loveModal.user = cell.user;
+            loveModal.user = sendLoveToUser;
             
             [viewController presentModalViewController:loveModal animated:YES];
         }

@@ -41,7 +41,6 @@ NSString *const kQuickActionPrefix = @"send-love-switch";
 
 @property (strong, nonatomic) NSMutableArray *sortedContactList;
 @property (strong, nonatomic) NSArray *searchResults;
-@property (weak, nonatomic) IBOutlet UIImageView *placeholderImage;
 @property (nonatomic) BOOL userIsPerformingQuickAction;
 @property (nonatomic) BOOL reloadPrevented;
 @property (nonatomic) BOOL isSearching;
@@ -78,7 +77,6 @@ NSString *const kQuickActionPrefix = @"send-love-switch";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self hidePlaceholder:YES];
     // place the settings button on the navigation item if required
     // or remove it if the user isn't logged in
     [CPUIHelper settingsButtonForNavigationItem:self.navigationItem];
@@ -118,8 +116,6 @@ NSString *const kQuickActionPrefix = @"send-love-switch";
             if (![[json objectForKey:@"error"] boolValue]) {
                 NSArray *payload = [json objectForKey:@"payload"];
                 NSArray *contactRequests = [json objectForKey:@"contact_requests"];
-                
-                [self hidePlaceholder:[payload count] > 0 || [contactRequests count] > 0];
                 
                 NSSortDescriptor *nicknameSort = [[NSSortDescriptor alloc] initWithKey:@"nickname" ascending:YES];
                 
@@ -191,14 +187,6 @@ NSString *const kQuickActionPrefix = @"send-love-switch";
     
     // store the array for search
     self.sortedContactList = [contactList mutableCopy];
-}
-
-- (void)hidePlaceholder:(BOOL)hide
-{
-    [self.placeholderImage setHidden:hide];
-    [self.tableView setScrollEnabled:hide];
-    [self.searchBar setHidden:!hide];
-    self.isSearching = !hide;
 }
 
 - (NSArray*)sectionIndexTitles

@@ -282,6 +282,7 @@
 		694323A915213D9000EBF585 /* UserResume.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 694323A815213D9000EBF585 /* UserResume.mustache */; };
 		6947F40015372B59005D9958 /* exchange-cards.png in Resources */ = {isa = PBXBuildFile; fileRef = 6947F3FE15372B59005D9958 /* exchange-cards.png */; };
 		6947F40115372B59005D9958 /* exchange-cards@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6947F3FF15372B59005D9958 /* exchange-cards@2x.png */; };
+		69682638165C49B300B053B3 /* LoadingPage.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 69682637165C49B300B053B3 /* LoadingPage.mustache */; };
 		697A686B156C3E8D001BEB35 /* TermsOfServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A686A156C3E8D001BEB35 /* TermsOfServiceViewController.m */; };
 		697A6870156C4ED4001BEB35 /* TermsOfService.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 697A686F156C4ED4001BEB35 /* TermsOfService.mustache */; };
 		69812EBC1637480000B3CE72 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69812EBB1637480000B3CE72 /* TutorialViewController.m */; };
@@ -689,6 +690,7 @@
 		694323A815213D9000EBF585 /* UserResume.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UserResume.mustache; sourceTree = "<group>"; };
 		6947F3FE15372B59005D9958 /* exchange-cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exchange-cards.png"; path = "User/images/exchange-cards.png"; sourceTree = "<group>"; };
 		6947F3FF15372B59005D9958 /* exchange-cards@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exchange-cards@2x.png"; path = "User/images/exchange-cards@2x.png"; sourceTree = "<group>"; };
+		69682637165C49B300B053B3 /* LoadingPage.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LoadingPage.mustache; path = candpiosapp/mustaches/LoadingPage.mustache; sourceTree = SOURCE_ROOT; };
 		697A6869156C3E8C001BEB35 /* TermsOfServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermsOfServiceViewController.h; path = Settings/TermsOfServiceViewController.h; sourceTree = "<group>"; };
 		697A686A156C3E8D001BEB35 /* TermsOfServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermsOfServiceViewController.m; path = Settings/TermsOfServiceViewController.m; sourceTree = "<group>"; };
 		697A686F156C4ED4001BEB35 /* TermsOfService.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TermsOfService.mustache; path = mustaches/TermsOfService.mustache; sourceTree = "<group>"; };
@@ -819,6 +821,7 @@
 			isa = PBXGroup;
 			children = (
 				5308DD0215D5E5DF00B4EBC2 /* images */,
+				69682635165C499000B053B3 /* mustaches */,
 				530FC24615D4389D00838B5A /* SignupController.h */,
 				530FC24715D4389D00838B5A /* SignupController.m */,
 				530FC23115D42BBD00838B5A /* LinkedInLoginController.h */,
@@ -1361,6 +1364,14 @@
 			path = mustaches;
 			sourceTree = "<group>";
 		};
+		69682635165C499000B053B3 /* mustaches */ = {
+			isa = PBXGroup;
+			children = (
+				69682637165C49B300B053B3 /* LoadingPage.mustache */,
+			);
+			name = mustaches;
+			sourceTree = "<group>";
+		};
 		697A686C156C4E3C001BEB35 /* mustaches */ = {
 			isa = PBXGroup;
 			children = (
@@ -1845,6 +1856,7 @@
 				539F7E7216558AE6005FF3F0 /* texture-lightpaperfibers@2x.png in Resources */,
 				69E91512165530AF00366C2D /* chat-entry-field.png in Resources */,
 				69E91513165530AF00366C2D /* chat-entry-field@2x.png in Resources */,
+				69682638165C49B300B053B3 /* LoadingPage.mustache in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

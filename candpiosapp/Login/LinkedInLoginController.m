@@ -17,6 +17,7 @@
 #import "CPCheckinHandler.h"
 #import "CPUserSessionHandler.h"
 #import "CPAlertView.h"
+#import "GRMustache.h"
 #import "TutorialViewController.h"
 
 typedef void (^LoadLinkedInConnectionsCompletionBlockType)();
@@ -49,7 +50,16 @@ typedef void (^LoadLinkedInConnectionsCompletionBlockType)();
     // check for token in keychain
     NSString *keyToken = [SSKeychain passwordForService:@"linkedin" account:@"token"];
     NSString *keyTokenSecret = [SSKeychain passwordForService:@"linkedin" account:@"token_secret"];
-    
+
+    NSString *loadingPageHTML = [GRMustacheTemplate renderObject:nil
+                                                    fromResource:@"LoadingPage"
+                                                          bundle:nil
+                                                           error:nil];
+
+    NSURL *anyNonCandpURL = [NSURL URLWithString:@"http://example.com"];
+    [self.myWebView loadHTMLString:loadingPageHTML
+                           baseURL:anyNonCandpURL];
+
     if (keyToken && keyTokenSecret)
     {
         // token and token secret found in keychain
